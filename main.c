@@ -22,14 +22,16 @@
  * a LED.
  */
 static THD_WORKING_AREA(waThread1, 128);
-static THD_FUNCTION(Thread1, arg) {
+static THD_FUNCTION(Thread1, arg)
+{
 
   (void)arg;
   chRegSetThreadName("blinker");
-  while (true) {
-    //palSetLine(LINE_ARD_D13);
+  while (true)
+  {
+    palSetLine(LINE_ARD_D13);
     chThdSleepMilliseconds(500);
-    //palClearLine(LINE_ARD_D13);
+    palClearLine(LINE_ARD_D13);
     chThdSleepMilliseconds(500);
   }
 }
@@ -37,7 +39,8 @@ static THD_FUNCTION(Thread1, arg) {
 /*
  * Application entry point.
  */
-int main(void) {
+int main(void)
+{
 
   /*
    * System initializations.
@@ -52,13 +55,13 @@ int main(void) {
   /*
    * ARD_D13 is programmed as output (board LED).
    */
-  //palClearLine(LINE_ARD_D13);
-  //palSetLineMode(LINE_ARD_D13, PAL_MODE_OUTPUT_PUSHPULL);
+  palClearLine(LINE_ARD_D13);
+  palSetLineMode(LINE_ARD_D13, PAL_MODE_OUTPUT_PUSHPULL);
 
   /*
    * Activates the serial driver 1 using the driver default configuration.
    */
-  //sdStart(&SD1, NULL);
+  sdStart(&SD1, NULL);
 
   /*
    * Creates the example thread.
@@ -78,17 +81,18 @@ int main(void) {
    * Normal main() thread activity, in this demo it does nothing except
    * sleeping in a loop and check the button state.
    */
-  while (true) {
-    GEvent* pe;
-    
+  while (true)
+  {
+    GEvent *pe;
+
     // Get an event
     pe = geventEventWait(&glistener, 0);
-    switch (pe->type) {
+    switch (pe->type)
+    {
 
-      default:
-        // gwinPrintf(ghConsole, "Unknown %d\n", pe->type);
-        break;
-        
+    default:
+      // gwinPrintf(ghConsole, "Unknown %d\n", pe->type);
+      break;
     }
     chThdSleepMilliseconds(1);
   }

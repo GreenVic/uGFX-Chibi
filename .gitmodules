@@ -1,0 +1,4 @@
+[submodule "uGFX"]
+	path = uGFX
+	url = git@github.com:ProfFan/uGFX.git
+	branch = master
