@@ -8,6 +8,7 @@
 #define _GUI_H_
 
 #include "gfx.h"
+
 // Widget groups
 #define GROUP_DEFAULT 0
 
@@ -19,6 +20,7 @@ extern GHandle ghContainerPage0;
 extern GHandle ghLabel1;
 extern GHandle ghLabel2;
 extern GHandle ghButton1;
+extern GHandle ghConsole1;
 
 // Function Prototypes
 void guiCreate(void);

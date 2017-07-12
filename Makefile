@@ -87,7 +87,6 @@ PROJECT = ch
 
 # Imported source files and paths
 CHIBIOS = ChibiOS_16.1.8
-
 GFXLIB = uGFX
 #GFXBOARD = STM32F746-Discovery
 
@@ -122,7 +121,8 @@ CSRC = $(STARTUPSRC) \
        $(TESTSRC) \
        $(GFXSRC) \
        main.c \
-       gui.c
+       gui.c \
+       ow.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.

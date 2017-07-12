@@ -39,6 +39,8 @@
 //    #define GFX_OS_EXTRA_INIT_FUNCTION               myOSInitRoutine
 //    #define GFX_OS_EXTRA_DEINIT_FUNCTION             myOSDeInitRoutine
 //    #define GFX_EMULATE_MALLOC                       FALSE
+#define GFX_USE_DIRECTIO TRUE
+
 ///////////////////////////////////////////////////////////////////////////
 // GDISP                                                                 //
 ///////////////////////////////////////////////////////////////////////////
@@ -60,7 +62,7 @@
 
 #define GDISP_DEFAULT_ORIENTATION                    GDISP_ROTATE_LANDSCAPE
 #define GDISP_NEED_MULTITHREAD                       TRUE
-
+#define GDISP_NEED_STARTUP_LOGO                      FALSE
 ///////////////////////////////////////////////////////////////////////////
 // GWIN                                                                  //
 ///////////////////////////////////////////////////////////////////////////
@@ -136,5 +138,6 @@
 ///////////////////////////////////////////////////////////////////////////
 #define GFX_USE_GMISC               TRUE
 #define GMISC_NEED_INVSQRT          TRUE
-
+#define GMISC_NEED_MATRIXFLOAT2D    TRUE
+#define GMISC_NEED_MATRIXFIXED2D    TRUE
 #endif /* _GFXCONF_H */

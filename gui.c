@@ -16,12 +16,10 @@ GHandle ghContainerPage0;
 GHandle ghLabel1;
 GHandle ghLabel2;
 GHandle ghButton1;
+GHandle ghConsole1;
 
 // Fonts
 font_t dejavu_sans_16;
-
-#define	ScrWidth			gdispGetWidth()
-#define	ScrHeight			gdispGetHeight()
 
 static void createPagePage0(void)
 {
@@ -33,8 +31,8 @@ static void createPagePage0(void)
 	wi.g.show = FALSE;
 	wi.g.x = 0;
 	wi.g.y = 0;
-	wi.g.width = ScrWidth;
-	wi.g.height = ScrHeight;
+	wi.g.width = 480;
+	wi.g.height = 272;
 	wi.g.parent = 0;
 	wi.text = "Container";
 	wi.customDraw = 0;
@@ -46,7 +44,7 @@ static void createPagePage0(void)
 	wi.g.show = TRUE;
 	wi.g.x = 20;
 	wi.g.y = 20;
-	wi.g.width = 110;
+	wi.g.width = 210;
 	wi.g.height = 20;
 	wi.g.parent = ghContainerPage0;
 	wi.text = "GSMC Industries";
@@ -55,6 +53,8 @@ static void createPagePage0(void)
 	wi.customStyle = 0;
 	ghLabel1 = gwinLabelCreate(0, &wi);
 	gwinLabelSetBorder(ghLabel1, FALSE);
+	gwinSetFont(ghLabel1, dejavu_sans_16);
+	gwinRedraw(ghLabel1);
 
 	// Create label widget: ghLabel2
 	wi.g.show = TRUE;
@@ -72,8 +72,8 @@ static void createPagePage0(void)
 
 	// create button widget: ghButton1
 	wi.g.show = TRUE;
-	wi.g.x = 60;
-	wi.g.y = 80;
+	wi.g.x = 320;
+	wi.g.y = 230;
 	wi.g.width = 120;
 	wi.g.height = 20;
 	wi.g.parent = ghContainerPage0;
@@ -82,6 +82,17 @@ static void createPagePage0(void)
 	wi.customParam = 0;
 	wi.customStyle = 0;
 	ghButton1 = gwinButtonCreate(0, &wi);
+
+	// Create console widget: ghConsole1
+	wi.g.show = TRUE;
+	wi.g.x = 20;
+	wi.g.y = 60;
+	wi.g.width = 420;
+	wi.g.height = 150;
+	wi.g.parent = ghContainerPage0;
+	ghConsole1 = gwinConsoleCreate(0, &wi.g);
+	gwinSetColor(ghConsole1, black_studio);
+	gwinSetBgColor(ghConsole1, silver_studio);
 }
 
 void guiShowPage(unsigned pageIndex)
@@ -89,7 +100,6 @@ void guiShowPage(unsigned pageIndex)
 	// Hide all pages
 	gwinHide(ghContainerPage0);
 
-	// Show page selected page
 	switch (pageIndex) {
 	case 0:
 		gwinShow(ghContainerPage0);
@@ -122,6 +132,8 @@ void guiCreate(void)
 	// Select the default display page
 	guiShowPage(0);
 
+	// Console sample text
+	gwinPrintf(ghConsole1, "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet");
 }
 
 void guiEventLoop(void)
@@ -132,10 +144,6 @@ void guiEventLoop(void)
 		// Get an event
 		pe = geventEventWait(&glistener, 0);
 		switch (pe->type) {
-
-			default:
-				// gwinPrintf(ghConsole, "Unknown %d\n", pe->type);
-				break;
 		}
 
 	}

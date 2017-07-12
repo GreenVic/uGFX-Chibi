@@ -17,6 +17,7 @@
 #include "ch.h"
 #include "hal.h"
 #include "gui.h"
+#include "ow.h"
 /*
  * This is a periodic thread that does absolutely nothing except flashing
  * a LED.
@@ -67,6 +68,7 @@ int main(void)
    * Creates the example thread.
    */
   chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
+  chThdCreateStatic(waThreadOnewire, sizeof(waThreadOnewire), LOWPRIO, ThreadOnewire, NULL);
 
   gfxInit();
 
