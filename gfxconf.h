@@ -63,6 +63,16 @@
 #define GDISP_DEFAULT_ORIENTATION                    GDISP_ROTATE_LANDSCAPE
 #define GDISP_NEED_MULTITHREAD                       TRUE
 #define GDISP_NEED_STARTUP_LOGO                      FALSE
+
+/********************************************************/
+/* Font stuff                                           */
+/********************************************************/
+#define GDISP_NEED_TEXT TRUE
+#define GDISP_NEED_ANTIALIAS TRUE
+#define GDISP_NEED_TEXT_KERNING FALSE
+#define GDISP_NEED_UTF8 FALSE
+#define GDISP_INCLUDE_USER_FONTS TRUE
+
 ///////////////////////////////////////////////////////////////////////////
 // GWIN                                                                  //
 ///////////////////////////////////////////////////////////////////////////

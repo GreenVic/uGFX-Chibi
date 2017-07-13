@@ -18,6 +18,7 @@
 #include "hal.h"
 #include "gui.h"
 #include "ow.h"
+#include "pms.h"
 /*
  * This is a periodic thread that does absolutely nothing except flashing
  * a LED.
@@ -62,13 +63,14 @@ int main(void)
   /*
    * Activates the serial driver 1 using the driver default configuration.
    */
-  sdStart(&SD1, NULL);
+  // sdStart(&SD6, NULL);
 
   /*
    * Creates the example thread.
    */
   chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
-  chThdCreateStatic(waThreadOnewire, sizeof(waThreadOnewire), LOWPRIO, ThreadOnewire, NULL);
+  chThdCreateStatic(waThreadOnewire, sizeof(waThreadOnewire), NORMALPRIO, ThreadOnewire, NULL);
+  chThdCreateStatic(waThreadPMS, sizeof(waThreadPMS), LOWPRIO, ThreadPMS, NULL);
 
   gfxInit();
 

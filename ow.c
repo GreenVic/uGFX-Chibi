@@ -52,6 +52,7 @@ THD_WORKING_AREA(waThreadOnewire, 512);
 THD_FUNCTION(ThreadOnewire, arg)
 {
     (void) arg;
+    chRegSetThreadName("onewire");
     while (true)
     {
         /*
@@ -73,7 +74,7 @@ THD_FUNCTION(ThreadOnewire, arg)
         chThdSleepMilliseconds(700);
         icuStopCapture(&ICUD1);
         icuStop(&ICUD1);
-        gwinPrintf(ghConsole1, "[%u] Temperature: %d C, Humidity: %d %% \n\r", chVTGetSystemTime() ,TEMP, HR);
+        gwinPrintf(ghConsole1, "[%u] Temp: %d C, Humidity: %d %% \n\r", chVTGetSystemTime() ,TEMP, HR);
         if (CHECK_SUM == (TEMP + HR))
         {
             gwinPrintf(ghConsole1, "Checksum OK!\n\r");
